@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Formulir Pendaftaran Acara Sekolah</title>
+
+    <style>
+
+        /* ===== BODY ===== */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #dbeafe, #ede9fe);
+            color: #1e293b;
+        }
+
+        /* ===== NAVIGASI ===== */
+        nav {
+            background: #1e3a8a;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #bfdbfe;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        header h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 17px;
+        }
+
+        /* ===== MAIN ===== */
+        main {
+            width: 90%;
+            max-width: 900px;
+            margin: 35px auto;
+        }
+
+        /* ===== CARD ===== */
+        section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        section h2 {
+            color: #2563eb;
+            border-bottom: 3px solid #dbeafe;
+            padding-bottom: 10px;
+        }
+
+        /* ===== INFORMASI ===== */
+        .info-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .box {
+            background: linear-gradient(135deg, #eff6ff, #f5f3ff);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #2563eb;
+        }
+
+        .box h3 {
+            color: #1d4ed8;
+            margin: 0 0 5px;
+        }
+
+        .box p {
+            margin: 0;
+        }
+
+        /* ===== TABEL ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+            padding: 14px;
+        }
+
+        td {
+            padding: 13px;
+            border-bottom: 1px solid #cbd5e1;
+        }
+
+        tr:nth-child(even) {
+            background: #eff6ff;
+        }
+
+        tr:hover {
+            background: #dbeafe;
+        }
+
+        /* ===== FORM ===== */
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: #eff6ff;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        /* ===== RADIO ===== */
+        .radio {
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .radio label {
+            display: inline-block;
+            margin-right: 25px;
+        }
+
+        .radio input {
+            accent-color: #2563eb;
+        }
+
+        /* ===== CHECKBOX ===== */
+        .checkbox {
+            background: #eff6ff;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        .checkbox label {
+            display: inline;
+            margin: 0;
+        }
+
+        .checkbox input {
+            accent-color: #2563eb;
+        }
+
+        /* ===== BUTTON ===== */
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #1d4ed8, #6d28d9);
+            transform: scale(1.01);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        /* ===== HP ===== */
+        @media (max-width: 600px) {
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            header h1 {
+                font-size: 28px;
+            }
+
+            .info-box {
+                grid-template-columns: 1fr;
+            }
+
+            .radio label {
+                display: block;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- NAVIGASI -->
+    <nav>
+        <div class="logo">🎓SMKN 8 JEMBER</div>
+
+        <a href="profil.html">
+         ← Kembali ke Profil
+        </a>
+    </nav>
+
+
+    <!-- HEADER -->
+    <header>
+
+        <h1>🏆 Pendaftaran Lomba Antar Kelas</h1>
+
+        <p>
+            Silakan isi formulir berikut untuk mengikuti
+            kegiatan lomba antar kelas di sekolah.
+        </p>
+
+    </header>
+
+
+    <main>
+
+        <!-- INFORMASI ACARA -->
+        <section>
+
+            <h2>📋 Informasi Acara</h2>
+
+            <div class="info-box">
+
+                <div class="box">
+                    <h3>📅 Tanggal</h3>
+                    <p>25 september 2026</p>
+                </div>
+
+                <div class="box">
+                    <h3>⏰ Waktu</h3>
+                    <p>08.00 - 15.00 WIB</p>
+                </div>
+
+                <div class="box">
+                    <h3>📍 Lokasi</h3>
+                    <p>Lapangan Sekolah</p>
+                </div>
+
+                <div class="box">
+                    <h3>💰 Biaya</h3>
+                    <p>gratis</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- JADWAL -->
+        <section>
+
+            <h2>🗓️ Jadwal Kegiatan</h2>
+
+            <table>
+
+                <tr>
+                    <th>Kegiatan</th>
+                    <th>Waktu</th>
+                </tr>
+
+                <tr>
+                    <td>Registrasi Peserta</td>
+                    <td>08.00 - 08.30</td>
+                </tr>
+
+                <tr>
+                    <td>Pembukaan</td>
+                    <td>08.30 - 09.00</td>
+                </tr>
+
+                <tr>
+                    <td>Pelaksanaan Lomba</td>
+                    <td>09.00 - 14.00</td>
+                </tr>
+
+                <tr>
+                    <td>Pengumuman Pemenang</td>
+                    <td>14.00 - 15.00</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- FORMULIR -->
+        <section>
+
+            <h2>📝 Formulir Pendaftaran</h2>
+
+            <form>
+
+                <label for="nama">
+                    Nama Lengkap
+                </label>
+
+                <input
+                    type="text"
+                    id="nama"
+                    placeholder="Masukkan nama lengkap"
+                    required
+                >
+
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="contoh@email.com"
+                    required
+                >
+
+
+                <label for="tanggal">
+                    Tanggal Pendaftaran
+                </label>
+
+                <input
+                    type="date"
+                    id="tanggal"
+                    required
+                >
+
+
+                <label>
+                    Jenis Kelamin
+                </label>
+
+                <div class="radio">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="jenis_kelamin"
+                            required
+                        >
+                        Laki-laki
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="jenis_kelamin"
+                        >
+                        Perempuan
+                    </label>
+
+                </div>
+
+
+                <label for="kelas">
+                    Kelas
+                </label>
+
+                <select id="kelas" required>
+
+                    <option value="">
+                        -- Pilih Kelas --
+                    </option>
+
+                    <option>X RPL</option>
+                    <option>X TKJ</option>
+                    <option>X DKV</option>
+
+                    <option>XI RPL</option>
+                    <option>XI TKJ</option>
+                    <option>XI DKV</option>
+
+                    <option>XII RPL</option>
+                    <option>XII TKJ</option>
+                    <option>XII DKV</option>
+
+                </select>
+
+
+                <label for="pesan">
+                    Pesan / Alasan Mendaftar
+                </label>
+
+                <textarea
+                    id="pesan"
+                    rows="5"
+                    placeholder="Tuliskan alasan kamu mengikuti acara ini..."
+                    required
+                ></textarea>
+
+
+                <div class="checkbox">
+
+                    <input
+                        type="checkbox"
+                        id="setuju"
+                        required
+                    >
+
+                    <label for="setuju">
+                        Saya menyetujui syarat dan ketentuan
+                        yang berlaku.
+                    </label>
+
+                </div>
+
+
+                <button type="submit">
+                    🚀 Daftar Sekarang
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <h3>🎓 SMKN 8 JEMBER</h3>
+
+        <p>
+            © 2026 SMKN 8 JEMBER |
+            Formulir Pendaftaran Acara Sekolah
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

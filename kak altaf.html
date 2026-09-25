@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Altaf</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f0f1a;
+            color: #e0e0e0;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: rgba(15, 15, 26, 0.95);
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        nav .logo {
+            color: #fff;
+            font-size: 22px;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        nav .logo span {
+            color: #6c63ff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav ul li a:hover {
+            color: #6c63ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0f0f1a 70%);
+        }
+
+        .hero-content h4 {
+            font-size: 16px;
+            color: #6c63ff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            color: #fff;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .hero-content h2 {
+            font-size: 24px;
+            color: #888;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .hero-content p {
+            font-size: 16px;
+            max-width: 550px;
+            margin: 0 auto 35px;
+            line-height: 1.8;
+            color: #999;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: #6c63ff;
+            color: #fff;
+            padding: 13px 32px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background-color: #5a52d5;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #6c63ff;
+            padding: 13px 32px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 14px;
+            border: 2px solid #6c63ff;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background-color: #6c63ff;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Section Common */
+        section {
+            padding: 100px 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: #fff;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-title p {
+            font-size: 15px;
+            color: #888;
+        }
+
+        .section-title .underline {
+            width: 60px;
+            height: 3px;
+            background-color: #6c63ff;
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Tentang Saya */
+        .tentang-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .tentang-img {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #6c63ff, #3b3790);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: #fff;
+        }
+
+        .tentang-text h3 {
+            font-size: 26px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .tentang-text p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .info-list li strong {
+            color: #6c63ff;
+            display: inline-block;
+            width: 120px;
+        }
+
+        /* Keahlian */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-item {
+            background-color: #1a1a2e;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .skill-item h4 {
+            font-size: 15px;
+            color: #fff;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .skill-item h4 span {
+            color: #6c63ff;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background-color: #2a2a3e;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #6c63ff, #8b83ff);
+            border-radius: 3px;
+        }
+
+        /* Proyek */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background-color: #1a1a2e;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.15);
+        }
+
+        .project-thumb {
+            width: 100%;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #fff;
+        }
+
+        .project-thumb.p1 { background: linear-gradient(135deg, #6c63ff, #4834d4); }
+        .project-thumb.p2 { background: linear-gradient(135deg, #ff6b6b, #ee5a24); }
+        .project-thumb.p3 { background: linear-gradient(135deg, #1dd1a1, #10ac84); }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .project-tags span {
+            background-color: rgba(108, 99, 255, 0.15);
+            color: #6c63ff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Kontak */
+        .kontak-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .kontak-info h3 {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .kontak-info p {
+            font-size: 15px;
+            color: #888;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .kontak-detail {
+            list-style: none;
+        }
+
+        .kontak-detail li {
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .kontak-detail li .icon {
+            width: 40px;
+            height: 40px;
+            background-color: #1a1a2e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c63ff;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .kontak-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .kontak-form input,
+        .kontak-form textarea {
+            background-color: #1a1a2e;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 14px 18px;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .kontak-form input:focus,
+        .kontak-form textarea:focus {
+            border-color: #6c63ff;
+        }
+
+        .kontak-form textarea {
+            height: 140px;
+            resize: vertical;
+        }
+
+        .kontak-form button {
+            background-color: #6c63ff;
+            color: #fff;
+            padding: 14px;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .kontak-form button:hover {
+            background-color: #5a52d5;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0a14;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        footer p span {
+            color: #6c63ff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 15px;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-content h2 {
+                font-size: 18px;
+            }
+
+            .tentang-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .kontak-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="#" class="logo">Altaf<span>.</span></a>
+        <ul>
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#keahlian">Keahlian</a></li>
+            <li><a href="#proyek">Proyek</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="beranda">
+        <div class="hero-content">
+            <h4>Halo, Saya</h4>
+            <h1>Altaf</h1>
+            <h2>Siswa Rekayasa Perangkat Lunak</h2>
+            <p>Saya adalah siswa RPL yang passionate dalam mengembangkan website dan aplikasi. Fokus pada pembelajaran teknologi modern dan pembangunan portofolio yang berkualitas.</p>
+            <div class="hero-buttons">
+                <a href="#proyek" class="btn-primary">Lihat Proyek</a>
+                <a href="#kontak" class="btn-secondary">Hubungi Saya</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang Saya -->
+    <section id="tentang">
+        <div class="section-title">
+            <h2>Tentang Saya</h2>
+            <p>Kenali saya lebih dekat</p>
+            <div class="underline"></div>
+        </div>
+        <div class="tentang-content">
+            <div class="tentang-img">&#128104;&#8205;&#128187;</div>
+            <div class="tentang-text">
+                <h3>Siswa RPL yang Berdedikasi</h3>
+                <p>Saya adalah siswa kelas RPL 1 yang memiliki ketertarikan besar di bidang pengembangan perangkat lunak. Saya terus belajar dan mengasah kemampuan dalam pemrograman web, basis data, dan pengembangan aplikasi untuk mempersiapkan diri di industri teknologi.</p>
+                <ul class="info-list">
+                    <li><strong>Nama:</strong> Altaf</li>
+                    <li><strong>Kelas:</strong> RPL 1</li>
+                    <li><strong>Sekolah:</strong> SMKN 8 Jember</li>
+                    <li><strong>Fokus:</strong> Web Development</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keahlian -->
+    <section id="keahlian">
+        <div class="section-title">
+            <h2>Keahlian</h2>
+            <p>Teknologi yang saya pelajari</p>
+            <div class="underline"></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <h4>HTML & CSS <span>85%</span></h4>
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="width: 85%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>JavaScript <span>65%</span></h4>
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="width: 65%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>Python <span>60%</span></h4>
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="width: 60%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>MySQL <span>70%</span></h4>
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="width: 70%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>Java <span>55%</span></h4>
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="width: 55%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <h4>Git & GitHub <span>50%</span></h4>
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="width: 50%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyek -->
+    <section id="proyek">
+        <div class="section-title">
+            <h2>Proyek</h2>
+            <p>Karya yang telah saya buat</p>
+            <div class="underline"></div>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-thumb p1">&#127760;</div>
+                <div class="project-info">
+                    <h3>Landing Page Kelas RPL</h3>
+                    <p>Membuat landing page responsif untuk kelas RPL 1 menggunakan HTML dan CSS dengan desain modern.</p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-thumb p2">&#128203;</div>
+                <div class="project-info">
+                    <h3>Formulir Data Diri</h3>
+                    <p>Aplikasi formulir pendaftaran untuk pengumpulan data diri siswa menggunakan HTML form elements.</p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>Form</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-thumb p3">&#128202;</div>
+                <div class="project-info">
+                    <h3>Tabel Database Siswa</h3>
+                    <p>Pembuatan tabel terstruktur untuk menampilkan data siswa dengan styling CSS yang rapi.</p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>Table</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="kontak">
+        <div class="section-title">
+            <h2>Kontak</h2>
+            <p>Hubungi saya</p>
+            <div class="underline"></div>
+        </div>
+        <div class="kontak-wrapper">
+            <div class="kontak-info">
+                <h3>Mari Terhubung</h3>
+                <p>Jika Anda ingin berdiskusi tentang proyek atau kolaborasi, jangan ragu untuk menghubungi saya melalui informasi di bawah atau formulir kontak.</p>
+                <ul class="kontak-detail">
+                    <li>
+                        <div class="icon">&#9993;</div>
+                        <span>altaf@smkn8jember.sch.id</span>
+                    </li>
+                    <li>
+                        <div class="icon">&#128205;</div>
+                        <span>Jember, Jawa Timur, Indonesia</span>
+                    </li>
+                    <li>
+                        <div class="icon">&#127891;</div>
+                        <span>Siswa Kelas RPL 1 - SMKN 8 Jember</span>
+                    </li>
+                </ul>
+            </div>
+            <form class="kontak-form">
+                <input type="text" placeholder="Nama Lengkap" required>
+                <input type="email" placeholder="Email" required>
+                <input type="text" placeholder="Subjek">
+                <textarea placeholder="Pesan Anda..." required></textarea>
+                <button type="submit">Kirim Pesan</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 <span>Altaf</span> - Kelas RPL 1. Semua hak dilindungi.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Belajar button</title>
+
+    <style>
+
+        /* Button dasar */
+        button {
+            background-color: rgb(224, 159, 159);
+            color: aliceblue;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Efek saat mouse diarahkan*/
+        button:hover {
+            background-color: rgb(216, 20, 20);
+        }
+
+        /* Button merah */
+        .btn-merah {
+            background-color: rgb(230, 40, 40);
+        }
+
+        /* Button hijau */
+        .btn-hijau {
+            background-color: rgb(58, 215, 50);
+        }
+
+        /* Button kuning */
+        .btn-kuning {
+            background-color: rgb(237, 239, 121);
+            color: black;
+        }
+         
+        /* Button besar */
+        .btn-besar {
+            padding: 15px 30px;
+            font-size: 20px;
+        }
+
+        /* Button kecil */
+        .btn-kecil {
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+
+        /* Button dengan border */
+        .btn-border {
+            background-color: aliceblue;
+            color: blue;
+            border: 2px solid blue;
+        }
+
+        /* Container */
+        .container {
+            padding: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+         
+        <h1>Belajar Button</h1>
+
+        <h2>Button Dasar</h2>
+
+        <button type="button">
+            Buttton Dasar
+        </button>
+
+
+        <br><br>
+
+        <h2>Button Warna</h2>
+
+        <button type="button" class="btn-merah">
+             merah
+        </button>
+
+        <button type="button" class="btn-hijau">
+             Hijau
+        </button>
+
+        <button type="button" class="btn-kuning">
+             Kuning
+        </button>
+
+
+        <br><br>
+
+
+        <h2>Button Besar</h2>
+
+        <button type="button" class="btn-besar">
+             Button Besar
+        </button>
+
+        <br><br>
+
+        <button type="button" class="btn-kecil">
+             Button kecil
+        </button>
+
+         <br><br>
+
+
+         <h2>Button Border</h2>
+
+         <button type="button" class="btn-border">
+             Button border
+         </button>
+
+         <br><br>
+
+
+         <h2>Button bulat</h2>
+
+         <button type="button" class="btn-bulat">
+             Button bulat
+         </button>
+
+         <br><br>
+
+         <h2>Button submit</h2>
+
+         
+         <form>
+             
+            <label>Nama:</label>
+             
+            <input type="text" name="fayi">
+
+
+            <br><br>
+
+
+            <button type="submit">
+                kirim
+            </button>
+                
+        
+         </form>
+
+
+         <br>
+
+
+         <h2>Button reset</h2>
+
+         <form>
+
+
+            <label>Nama</label>
+
+            <input type="text" name="fayi">
+
+            <br><br>
+
+
+            <button type="submit">
+                 kirim
+            </button>
+
+
+            <button type="submit">
+                   reset
+            </button>
+
+
+         </form>
+
+    </div>
+
+    
+</body>
+
+</html>

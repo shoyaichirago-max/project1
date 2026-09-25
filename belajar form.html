@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Diri</title>
+    <style>
+        :root {
+            --primary-color: #28a745;
+            --primary-hover: #218838;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #ced4da;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+        }
+
+        .form-group { margin-bottom: 20px; }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], select, textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+        }
+
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .radio-option input, .checkbox-option input {
+            width: auto;
+            cursor: pointer;
+            accent-color: var(--primary-color);
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button[type="submit"]:hover { background-color: var(--primary-hover); }
+    </style>
+</head>
+<body>
+
+    <h2>Data Siswa</h2>
+
+    <form id="formRegistrasi">
+        <div class="form-group">
+            <label for="nama">Nama Lengkap</label>
+            <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="xxxxxxx@email.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="pass">Password</label>
+            <input type="password" id="pass" name="password" placeholder="masukkan pasword" minlength="4" required>
+        </div>
+
+        <div class="form-group">
+            <label>Jenis Kelamin</label>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" id="pria" name="gender" value="Pria" required> Pria</label>
+                <label class="radio-option"><input type="radio" id="wanita" name="gender" value="Wanita"> Wanita</label>
+                <label class="radio-option"><input type="radio" id="waria" name="gender" value="Waria"> Waria</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Minat</label>
+            <div class="checkbox-group">
+                <label class="checkbox-option"><input type="checkbox" id="coding" name="minat" value="Coding"> Coding</label>
+                <label class="checkbox-option"><input type="checkbox" id="desain" name="minat" value="Desain"> Desain</label>
+                <label class="checkbox-option"><input type="checkbox" id="developer" name="minat" value="Developer"> Developer</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="kota">Asal Kota</label>
+            <select id="kota" name="kota" required>
+                <option value="">-- Pilih Kota --</option>
+                <option value="Jakarta">Jakarta</option>
+                <option value="Surabaya">Surabaya</option>
+                <option value="Bali">Bali</option>
+                <option value="Bandung">Bandung</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="keluhKesah">Hal Yang Kamu Rasakan Ketika Koding</label>
+            <textarea id="keluhKesah" name="keluhKesah" rows="4" placeholder="Ceritakan dengan jujur..."></textarea>
+        </div>
+
+        <button type="submit">Daftar Sekarang</button>
+    </form>
+
+    <script>
+        document.getElementById('formRegistrasi').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const minatTerpilih = [];
+            if(document.getElementById('coding').checked) minatTerpilih.push('Coding');
+            if(document.getElementById('desain').checked) minatTerpilih.push('Desain');
+            if(document.getElementById('developer').checked) minatTerpilih.push('Developer');
+
+            const dataSiswa = {
+                nama: document.getElementById('nama').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                gender: document.querySelector('input[name="gender"]:checked')?.value || '-',
+                minat: minatTerpilih.length > 0 ? minatTerpilih.join(', ') : '-',
+                kota: document.getElementById('kota').value,
+                keluhKesah: document.getElementById('keluhKesah').value.trim() || '-'
+            };
+
+            localStorage.setItem('dataSiswa', JSON.stringify(dataSiswa));
+            window.location.href = 'hasil.html';
+        });
+    </script>
+
+</body>
+</html>
